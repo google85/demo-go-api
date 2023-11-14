@@ -13,8 +13,22 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 COPY src/. .
 
 RUN go build \
-    -ldflags "-linkmode external -extldflags -static -s -w" \
+    -ldflags "-extldflags -static -s -w" \
     -tags netgo \
     -o api-go-demo
 
-#EXPOSE 8080
+###
+FROM scratch
+
+ENV GIN_MODE release
+
+COPY --from=build /etc/passwd /etc/passwd
+
+COPY --from=build /app/api-go-demo /api-go-demo
+
+#USER nonroot
+
+EXPOSE 8080
+
+#CMD ["sleep", "360000000000"]
+CMD ["/api-go-demo"]

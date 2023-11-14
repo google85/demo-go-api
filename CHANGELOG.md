@@ -31,3 +31,7 @@
         make dev
     ```
     - added static build, non-root user
+    - modified for starting as production
+    ```bash
+        make start
+    ```

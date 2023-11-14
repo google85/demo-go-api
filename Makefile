@@ -11,6 +11,7 @@ build: ## Build
 .PHONY: dev
 dev: ## Exec in container
 		@echo Entering container
+		@echo "Please make start" && exit 1
 		make build && \
 		docker run --rm --tty --interactive  -w /app  api-go-demo:latest  /bin/bash
 
@@ -18,9 +19,7 @@ dev: ## Exec in container
 start: ## Start all containers
 		@echo Starting all
 		make build && \
-		make dev
-#		docker run -rm -it  -w /app api-go-demo:latest  /bin/bash
-#		echo docker run -p demo-api-go  api-go-demo:latest
+		docker run --rm --name api-go-demo-container -p 8080:8080  api-go-demo:latest
 #		docker compose up -d
 
 .PHONY: stop
