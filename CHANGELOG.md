@@ -25,4 +25,8 @@
         # edit Dockerfile
         make dev
         # in container
+        go mod download
+        exit
+        # put it in Dockerfile & restart dev
+        make dev
     ```
