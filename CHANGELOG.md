@@ -30,3 +30,4 @@
         # put it in Dockerfile & restart dev
         make dev
     ```
+    - added static build, non-root user

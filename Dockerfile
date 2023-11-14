@@ -2,6 +2,8 @@ FROM golang:1.19-buster as build
 
 WORKDIR /app
 
+RUN useradd -u 1001 nonroot
+
 COPY src/go.mod src/go.sum  ./
 
 RUN --mount=type=cache,target=/go/pkg/mod \
@@ -11,7 +13,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 COPY src/. .
 
 RUN go build \
-    -ldflags "-s -w" \
+    -ldflags "-linkmode external -extldflags -static -s -w" \
     -tags netgo \
     -o api-go-demo
 
