@@ -18,7 +18,6 @@ dev: ## Exec in container
 .PHONY: start
 start: ## Start all containers
 		@echo Starting all
-		make build && \
 		docker run --rm --name api-go-demo-container -p 8080:8080  api-go-demo:latest
 #		docker compose up -d
 

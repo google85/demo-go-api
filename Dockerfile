@@ -26,9 +26,8 @@ COPY --from=build /etc/passwd /etc/passwd
 
 COPY --from=build /app/api-go-demo /api-go-demo
 
-#USER nonroot
+USER nonroot
 
 EXPOSE 8080
 
-#CMD ["sleep", "360000000000"]
 CMD ["/api-go-demo"]
