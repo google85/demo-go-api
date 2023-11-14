@@ -1,11 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
-	"log"
-	"os"
-	"time"
-
 	"github.com/gin-gonic/gin"
 )
 

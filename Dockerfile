@@ -8,4 +8,11 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
     go mod download
 
-COPY . .
+COPY src/. .
+
+RUN go build \
+    -ldflags "-s -w" \
+    -tags netgo \
+    -o api-go-demo
+
+#EXPOSE 8080
