@@ -25,3 +25,10 @@ start: ## Start all containers
 stop: ## Stop all containers
 		@echo Stopping all
 #		docker compose down
+
+.PHONY: copy-bin
+copy-bin: ## Copy binary file
+		@echo "Run & copy binary file [Ctrl+C]"
+		docker run --name api-go-demo-container  api-go-demo && \
+		docker cp api-go-demo-container:/api-go-demo . && \
+		docker rm api-go-demo-container
