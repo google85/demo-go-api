@@ -18,4 +18,11 @@
         go mod init api-go-demo
         # add deps
         go get github.com/gin-gonic/gin
+        exit
+    ```
+    - update `Dockerfile`` & make dev with use of `go.mod`, `go.sum`
+    ```bash
+        # edit Dockerfile
+        make dev
+        # in container
     ```
